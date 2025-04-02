@@ -90,7 +90,7 @@ std::string generateModifyHeader(Root const& root, std::filesystem::path const& 
         std::string class_include;
 
         if (c.name.find("cocos2d::extension") != std::string::npos) {
-            class_include = "#include <cocos-ext.h>";
+            // class_include = "#include <cocos-ext.h>";
         }
         else if (is_cocos_class(c.name)) {
             class_include = "#include <cocos2d.h>";

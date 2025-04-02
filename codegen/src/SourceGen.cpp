@@ -10,22 +10,22 @@ namespace { namespace format_strings {
 
 using namespace geode;
 using namespace geode::modifier;
-using cocos2d::CCDestructor;
+// using cocos2d::CCDestructor;
 
-std::unordered_map<void*, bool>& CCDestructor::destructorLock() {{
-	static thread_local std::unordered_map<void*, bool> ret;
-	return ret;
-}}
-bool& CCDestructor::globalLock() {{
-	static thread_local bool ret = false;
-	return ret; 
-}}
-bool& CCDestructor::lock(void* self) {
-	return destructorLock()[self];
-}
-CCDestructor::~CCDestructor() {{
-	destructorLock().erase(this);
-}}
+// std::unordered_map<void*, bool>& CCDestructor::destructorLock() {{
+// 	static thread_local std::unordered_map<void*, bool> ret;
+// 	return ret;
+// }}
+// bool& CCDestructor::globalLock() {{
+// 	static thread_local bool ret = false;
+// 	return ret; 
+// }}
+// bool& CCDestructor::lock(void* self) {
+// 	return destructorLock()[self];
+// }
+// CCDestructor::~CCDestructor() {{
+// 	destructorLock().erase(this);
+// }}
 
 auto wrapFunction(uintptr_t address, tulip::hook::WrapperMetadata const& metadata) {
 	auto wrapped = geode::hook::createWrapper(reinterpret_cast<void*>(address), metadata);

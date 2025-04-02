@@ -5,8 +5,8 @@ project(GeodeBindings VERSION 1.0.0)
 if (NOT DEFINED GEODE_TARGET_PLATFORM)
 	message(FATAL_ERROR "GEODE_TARGET_PLATFORM is not defined.")
 endif()
-if (NOT DEFINED GEODE_GD_VERSION)
-	message(FATAL_ERROR "GEODE_GD_VERSION is not defined.")
+if (NOT DEFINED GEODE_GAME_VERSION)
+	message(FATAL_ERROR "GEODE_GAME_VERSION is not defined.")
 endif()
 if (NOT DEFINED GEODE_LOADER_PATH)
 	message(FATAL_ERROR "GEODE_LOADER_PATH is not defined.")
@@ -18,8 +18,10 @@ option(
 	OFF
 )
 
+set(GEODE_GAME_CODE "tsbe")
+
 if (NOT GEODE_BINDINGS_PATH)
-	set(GEODE_BINDINGS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bindings/${GEODE_GD_VERSION})
+	set(GEODE_BINDINGS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bindings/${GEODE_GAME_CODE}/${GEODE_GAME_VERSION})
 endif()
 
 set(GEODE_CODEGEN_BINARY_OUT ${CMAKE_CURRENT_BINARY_DIR}/codegen)
@@ -163,7 +165,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 if (NOT BINDINGS_VERSIONED_ONLY)
 	target_include_directories(${PROJECT_NAME} PUBLIC
-		${CMAKE_CURRENT_SOURCE_DIR}/bindings/include
+		${CMAKE_CURRENT_SOURCE_DIR}/bindings/${GEODE_GAME_CODE}/include
 	)
 endif()
 
